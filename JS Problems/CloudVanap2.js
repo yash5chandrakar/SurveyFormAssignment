@@ -1,17 +1,25 @@
 let arr = [1,2,5,99,35,3242,321,3,4,5,6,7,8,9,10,11,12,13,14]
 
-arr = arr.sort((a,b)=>{
-    if(parseInt(a)>parseInt(b)){
-        return -1
+function sortArray(array){
+    let ind;
+    for(let i=0;i<array.length;i++){
+        ind = i;
+        for(j=i+1;j<array.length;j++){
+            if(parseInt(arr[j])<parseInt(arr[ind])){
+                ind = j;
+            }
+        }
+        changePositions(array,ind,i);
     }
-    else if(parseInt(a)<parseInt(b)){
-        return 1
-    }
-    else{
-        return 0;
-    }
-})
+    return array
+}
 
-console.log(arr)
+function changePositions(array,ind1,ind2){
+    let tempValue = array[ind1]
+    array[ind1] = arr[ind2]
+    arr[ind2] = tempValue
+}
+
+console.log(sortArray(arr))
 
 
